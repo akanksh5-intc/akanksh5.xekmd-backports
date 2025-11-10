@@ -1,0 +1,13 @@
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_tt.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_bo.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_bo_util.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_bo_vm.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_module.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_execbuf_util.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_range_manager.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_resource.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_pool.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_device.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_sys_manager.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_backup.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm_agp_backend.o

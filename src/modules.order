@@ -1,0 +1,11 @@
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/compat/xe-compat.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/xe/xe.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/ttm/ttm.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/gpu/drm/scheduler/gpu-sched.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drm_ttm_helper.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drm_gpuvm.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/platform/x86/intel/pmt/pmt_class.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/platform/x86/intel/pmt/pmt_telemetry.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/platform/x86/intel/pmt/pmt_crashlog.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/drivers/platform/x86/intel/intel-vsec.o
+/home/seos-backport/Work/git/akanksh5.drivers.gpu.kernel.backport-tools/xe-automation/akanksh5.xekmd-backports/releases/src/mtd_intel_dg.o

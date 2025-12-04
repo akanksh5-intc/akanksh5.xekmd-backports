@@ -31,7 +31,7 @@ BKPT_VER=@DOLLAR_SIGN@(shell cat src/versions | grep BACKPORTS_RELEASE_TAG | cut
 # Tagging is needed for decoding
 DEV_TAG=@DOLLAR_SIGN@(shell cat src/versions | grep BASE_KERNEL_TAG | cut -f 2 -d "\"" | cut -d "-" -f 3 2>/dev/null || echo 1)
 
-VERSION=1.$(BKPT_VER)
+VERSION=0.$(BKPT_VER)
 
 #------------------------------------------------------------------------------
 #
@@ -63,7 +63,7 @@ DEF_VER=@DOLLAR_SIGN@(shell cat debian/changelog.in | head -1 | cut -d '(' -f 2 
 #------------------------------------------------------------------------------
 
 
-export KBUILD_ONLYXEDIRS := src/drivers/gpu src/include src/scripts
+export KBUILD_ONLYXEDIRS := src/drivers/gpu src/include src/scripts src/drivers/platform src/drivers/mtd
 export KBUILD_AUTOTOOLS := m4 AUTHORS  ChangeLog  configure.ac  COPYING  INSTALL Makefile  Makefile.am  NEWS  README compile.sh
 XE_TAR_CONTENT=$(KBUILD_ONLYXEDIRS) $(KBUILD_AUTOTOOLS) src/Makefile* src/local-symbols src/MAINTAINERS \
 	src/Kconfig src/Kconfig.sources src/Kconfig.package.hacks src/COPYING src/versions src/defconfigs src/backport-include src/kconf src/compat

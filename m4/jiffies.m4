@@ -5,7 +5,7 @@ dnl #
 AC_DEFUN([AC_SECS_TO_JIFFIES_NOT_PRESENT], [
         AC_KERNEL_DO_BACKGROUND([
                 AC_KERNEL_TRY_COMPILE([
-                        #include <linux/jiffies.h>
+                        #include <linux/ktime.h>
                 ],[
 			secs_to_jiffies(1);
                 ],[

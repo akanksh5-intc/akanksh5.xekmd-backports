@@ -63,19 +63,13 @@ jobs:
           # 1) Read latest existing oot-backport tag: xeb_vX.Y.Z.W_YYMMDD.R
           LAST_XEB_TAG=$(git tag -l 'xeb_*' | sort -V | tail -1)
 
-          # 2) Fetch kernel-backport/main and tags, then resolve kernel tag
+          # 2) Fetch kernel-backport/main and find latest tag pointing at its HEAD
           git fetch origin kernel-backport/main
-          git fetch --tags origin
           KERNEL_HEAD_SHA=$(git rev-parse origin/kernel-backport/main)
           KERNEL_HEAD_TAG=$(git tag --points-at "$KERNEL_HEAD_SHA" | sort -V | tail -1)
 
           if [[ -z "$KERNEL_HEAD_TAG" ]]; then
-            echo "No tag points directly to kernel-backport/main HEAD ($KERNEL_HEAD_SHA), trying nearest reachable tag"
-            KERNEL_HEAD_TAG=$(git describe --tags --abbrev=0 "$KERNEL_HEAD_SHA" 2>/dev/null || true)
-          fi
-
-          if [[ -z "$KERNEL_HEAD_TAG" ]]; then
-            echo "Unable to resolve kernel tag for kernel-backport/main HEAD ($KERNEL_HEAD_SHA)"
+            echo "No tag points to kernel-backport/main HEAD ($KERNEL_HEAD_SHA)"
             exit 1
           fi
 

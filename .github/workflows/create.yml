@@ -2,8 +2,6 @@ name: Create and test backports tar
 
 on:
   push:
-    branches-ignore:
-      - oot-backport/main_temp
 
 jobs:
   create_tar:

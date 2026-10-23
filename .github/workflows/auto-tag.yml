@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - oot-backport/main
+      - oot-backport/main_temp
 
 jobs:
   auto-tag:

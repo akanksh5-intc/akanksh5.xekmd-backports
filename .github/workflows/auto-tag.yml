@@ -23,12 +23,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [[ "${{ github.ref_name }}" == "oot-backport/main_temp" ]]; then
-            echo "is_merge=true" >> $GITHUB_OUTPUT
-            echo "✅ Test mode enabled for oot-backport/main_temp"
-            exit 0
-          fi
-
           # Get commit message and SHA
           COMMIT_SHA="${{ github.sha }}"
           COMMIT_MSG=$(git log -1 --pretty=%B HEAD)

@@ -1,0 +1,88 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Akanksha Hotta <akanksha.hotta@intel.com>
+Date: Sat, 21 Nov 2026 12:00:00 +0530
+Subject: drm/xe/i2c: use unmanaged swnode when platform_device_info lacks
+ swnode
+
+Upstream "drm/xe/i2c: Fix use-after-free on driver unload" registers the
+DesignWare adapter with platform_device_register_full() and a static
+software node passed via platform_device_info.swnode. That member only
+exists since v7.1.
+On older kernels, attach the static node with device_add_software_node()
+instead of a managed node, since the DesignWare adapter child reuses it
+as its fwnode and would drop the managed node's last reference on
+removal.Those kernels also lack software node on release, 
+so remove the node explicitly after unregistering the platform device.
+
+Signed-off-by: Akanksha Hotta <akanksha.hotta@intel.com>
+---
+ drivers/gpu/drm/xe/xe_i2c.c | 47 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+
+diff --git a/drivers/gpu/drm/xe/xe_i2c.c b/drivers/gpu/drm/xe/xe_i2c.c
+index 1111111..2222222 100644
+--- a/drivers/gpu/drm/xe/xe_i2c.c
++++ b/drivers/gpu/drm/xe/xe_i2c.c
+@@ -111,6 +111,52 @@ static int xe_i2c_notifier(struct notifier_block *nb, unsigned long action, void
+ 	return NOTIFY_DONE;
+ }
+ 
++#ifdef BPM_PLATFORM_DEVICE_INFO_SWNODE_NOT_PRESENT
++static int xe_i2c_register_adapter(struct xe_i2c *i2c)
++{
++	struct pci_dev *pci = to_pci_dev(i2c->drm_dev);
++	struct platform_device *pdev;
++	int ret;
++
++	pdev = platform_device_alloc(adapter_name,
++				     (pci_domain_nr(pci->bus) << 16) | pci_dev_id(pci));
++	if (!pdev)
++		return -ENOMEM;
++
++	pdev->dev.parent = i2c->drm_dev;
++
++	/* Unmanaged: the DesignWare adapter child reuses this node as its fwnode */
++	ret = device_add_software_node(&pdev->dev, &xe_i2c_adapter_node);
++	if (ret)
++		goto err_put;
++
++	ret = platform_device_add(pdev);
++	if (ret)
++		goto err_remove_swnode;
++
++	i2c->pdev = pdev;
++
++	return 0;
++
++err_remove_swnode:
++	device_remove_software_node(&pdev->dev);
++err_put:
++	platform_device_put(pdev);
++
++	return ret;
++}
++
++static void xe_i2c_unregister_adapter(struct xe_i2c *i2c)
++{
++	struct platform_device *pdev = i2c->pdev;
++
++	/* Platform core doesn't remove the swnode on release before v7.1 */
++	get_device(&pdev->dev);
++	platform_device_unregister(pdev);
++	device_remove_software_node(&pdev->dev);
++	put_device(&pdev->dev);
++}
++#else
+ static int xe_i2c_register_adapter(struct xe_i2c *i2c)
+ {
+ 	struct pci_dev *pci = to_pci_dev(i2c->drm_dev);
+@@ -136,6 +182,7 @@ static void xe_i2c_unregister_adapter(struct xe_i2c *i2c)
+ {
+ 	platform_device_unregister(i2c->pdev);
+ }
++#endif
+ 
+ /**
+  * xe_i2c_present - I2C controller is present and functional
+-- 
+2.34.1
